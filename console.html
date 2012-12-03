@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Console</title>
+    </head>
+    <style>
+        .console {
+            font-family: arial;
+            font-size: 8pt;
+            margin: 0;
+            padding: 0 0 0 2px;
+        }
+        .gray_color {
+            background: #cccccc;
+        }
+    </style>
+    <body>
+        <iframe src="console.html" height="90%" width="100%" frameBorder="0" style="display:inline; border: 0"></iframe>
+        <div id="console" style="border:1px solid;" height="90%" width="100%"></div>
+        <script>
+            var consoleBox = document.getElementById('console');
+            var counter = 1;
+            window.addEventListener('message', function(event) {
+                var p = document.createElement('div');
+                var _class = "console";
+                if(counter % 2 == 0) _class += ' gray_color';
+                p.setAttribute('class', _class);
+                p.innerHTML = event.data;
+                consoleBox.appendChild(p);
+                counter++;
+            }, false);
+        </script>
+    </body>
+</html>
